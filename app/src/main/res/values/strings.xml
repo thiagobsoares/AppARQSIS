@@ -14,4 +14,14 @@
     <string name="lista_status">Consultar por Status</string>
     <string name="lista_fila">Consultar por Fila</string>
     <string name="lista_todos">Consultar Todos</string>
+    <string name="numero_chamado">Numero do Chamado </string>
+    <string name="chamado_aberto">Chamado aberto com sucesso!</string>
+    <string name="status">Status</string>
+    <string name="sim">Sim</string>
+    <string name="nao">Não</string>
+    <string name="fechar_chamado_confirmation">Deseja realmente fechar esse chamado?</string>
+    <string name="aguarde">Aguarde</string>
+    <string name="msg_aguarde">Conectando aos nossos servidores</string>
+    <string name="campos_incorretos">Favor preecher os campos corretamente!</string>
+    <string name="erro_criacao">Erro de criação de Chamado! Favor tente novamente!</string>
 </resources>

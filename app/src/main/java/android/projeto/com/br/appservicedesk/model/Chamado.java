@@ -1,6 +1,5 @@
 package android.projeto.com.br.appservicedesk.model;
 
-import android.projeto.com.br.appservicedesk.enums.TiposDeFila;
 
 import java.util.Date;
 
@@ -9,25 +8,44 @@ import java.util.Date;
  */
 public class Chamado {
 
-    private int numero;
+    private long numero;
     private String descricao;
     private Date dataDeFechamento;
     private Date dataAbertura;
     private int status;
+    private int fila;
 
-    public Chamado(int numero, String descricao, Date dataDeFechamento, Date dataAbertura, int status) {
+    public Chamado(long numero, String descricao, Date dataDeFechamento, Date dataAbertura, int status,int fila) {
         this.numero = numero;
         this.descricao = descricao;
         this.dataDeFechamento = dataDeFechamento;
         this.dataAbertura = dataAbertura;
         this.status = status;
+        this.fila = fila;
     }
 
-    public int getNumero() {
+    public Chamado(String descricao,int status,int fila) {
+        this.descricao = descricao;
+        this.dataAbertura = new Date();
+        this.status = status;
+        this.fila = fila;
+    }
+
+
+    public int getFila() {
+        return fila;
+    }
+
+    public void setFila(int fila) {
+        this.fila = fila;
+    }
+
+
+    public long getNumero() {
         return numero;
     }
 
-    public void setNumero(int numero) {
+    public void setNumero(long numero) {
         this.numero = numero;
     }
 

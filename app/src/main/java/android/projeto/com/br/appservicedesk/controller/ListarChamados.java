@@ -1,35 +1,38 @@
 package android.projeto.com.br.appservicedesk.controller;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.projeto.com.br.appservicedesk.R;
-import android.projeto.com.br.appservicedesk.initializer.InitializeSpinner;
+
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Spinner;
+
 
 public class ListarChamados extends AppCompatActivity {
 
-    private Spinner escolherFila,escolherStatus;
+    Activity activity;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_listar_chamados);
+        activity = this;
     }
 
+
     public void listarPorFila(View view){
-        setContentView(R.layout.escolher_fila);
-        escolherFila = (Spinner) findViewById(R.id.escolherFila);
-        escolherFila = InitializeSpinner.initializeAndSetAdapterSppinerForFila(escolherFila,this);
+        Intent intent = new Intent(this,ListaPorFila.class);
+        startActivity(intent);
     }
 
     public void listarPorStatus(View view){
-        setContentView(R.layout.escolher_status);
-        escolherStatus = (Spinner) findViewById(R.id.escolherStatus);
-        escolherStatus = InitializeSpinner.initializeAndSetAdapterSppinerForStatus(escolherStatus,this);
+        Intent intent = new Intent(this,ListaPorStatus.class);
+        startActivity(intent);
     }
 
     public void listarTodosChamados(View view){
-
+        Intent intent = new Intent(this,ListaTodosChamados.class);
+        startActivity(intent);
     }
 }

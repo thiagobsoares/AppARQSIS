@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="android.projeto.com.br.appservicedesk">
 
+    <uses-permission android:name="android.permission.INTERNET"/>
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -20,7 +22,9 @@
         <activity android:name=".controller.ChamadoMensagem" />
         <activity android:name=".controller.FecharChamados" />
         <activity android:name=".controller.FecharChamadosLista" />
-        <activity android:name=".controller.ListaDeChamados"/>
+        <activity android:name=".controller.ListaTodosChamados" />
+        <activity android:name=".controller.ListaPorFila" />
+        <activity android:name=".controller.ListaPorStatus"></activity>
+        <activity android:name=".controller.DetalheChamadosActivity"></activity>
     </application>
-
 </manifest>

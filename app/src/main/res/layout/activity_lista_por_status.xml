@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -6,7 +7,7 @@
     android:paddingLeft="16dp"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="16dp"
-    tools:context=".controller.FecharChamados">
+    tools:context=".controller.ListaPorStatus">
 
 
     <TableLayout
@@ -25,7 +26,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:textSize="30sp"
-                android:text="@string/escolha_fila"
+                android:text="@string/escolha_status"
                 android:textStyle="bold"
                 android:textColor="@color/abc_primary_text_material_light" />
         </TableRow>
@@ -40,8 +41,9 @@
             <Spinner
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
+                android:labelFor="@string/escolha_status"
                 android:longClickable="true"
-                android:id="@+id/escolherFila" />
+                android:id="@+id/escolherStatus" />
         </TableRow>
 
         <TableRow
@@ -73,8 +75,7 @@
                 android:paddingLeft="10dp"
                 android:paddingRight="10dp"
                 android:padding="10dp"
-                android:paddingTop="10dp"
-                android:onClick="listarChamados"/>
+                android:paddingTop="10dp" />
         </TableRow>
     </TableLayout>
 

@@ -1,13 +1,11 @@
 package android.projeto.com.br.appservicedesk.controller;
 
 import android.app.Activity;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.projeto.com.br.appservicedesk.R;
 import android.projeto.com.br.appservicedesk.model.Chamado;
 import android.projeto.com.br.appservicedesk.model.ChamadoAdapter;
 import android.projeto.com.br.appservicedesk.model.Data;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -17,7 +15,8 @@ import android.widget.ListView;
 
 import java.util.ArrayList;
 
-public class FecharChamadosLista extends AppCompatActivity {
+
+public class ListaTodosChamados extends AppCompatActivity {
 
     public static final String NUMERO = "android.projeto.com.br.appservicedesk.numero_det";
     public static final String DESCRICAO = "android.projeto.com.br.appservicedesk.descricao_det";
@@ -28,37 +27,28 @@ public class FecharChamadosLista extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_fechar_chamados_lista);
+        setContentView(R.layout.activity_lista_todos_chamados);
         atividade = this;
         Intent intent = getIntent();
-        int idfila = Integer.parseInt(intent.getStringExtra(FecharChamados.FILA));
         lista = Data.buscaChamados();
         BaseAdapter adapter = new ChamadoAdapter(this, lista);
-        ListView listView = (ListView) findViewById(R.id.fecha_chamados);
+        ListView listView = (ListView) findViewById(R.id.lista_chamados);
         listView.setAdapter(adapter);
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
             @Override
             public void onItemClick(AdapterView<?> parent, View view,
-                                    final int position, long id) {
+                                    int position, long id) {
 
-                new AlertDialog.Builder(atividade)
-                        .setTitle(R.string.fechar_chamado)
-                        .setMessage(R.string.fechar_chamado_confirmation)
-                        .setPositiveButton(R.string.sim, new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int which) {
-                                // continue with delete
-                                lista.get(position).getNumero();
-                            }
-                        })
-                        .setNegativeButton(R.string.nao, new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int which) {
-                                // do nothing
-                            }
-                        })
-                        .setIcon(android.R.drawable.ic_dialog_alert)
-                        .show();
+                // manda para a tela de detalhe
+                Intent intent = new Intent(atividade, DetalheChamadosActivity.class);
+                intent.putExtra(NUMERO, String.valueOf(lista.get(position).getNumero()));
+                intent.putExtra(DESCRICAO, lista.get(position).getDescricao());
+                //intent.putExtra(STATUS, StatusConverter.statusName.get(lista.get(position).getStatus()));
+
+                startActivity(intent);
+
             }
 
         });
