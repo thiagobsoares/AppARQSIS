@@ -7,29 +7,13 @@
     android:paddingLeft="16dp"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="16dp"
-    tools:context=".controller.NovoChamado">
+    tools:context=".controller.ListarChamados">
 
 
     <TableLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:stretchColumns="*">
-
-
-        <TableRow
-            android:id="@+id/tableRow1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_weight="1">
-
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:textSize="50sp"
-                android:hint="@string/descricao"
-                />
-        </TableRow>
 
         <TableRow
             android:id="@+id/tableRow5"
@@ -57,9 +41,8 @@
             <Spinner
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:labelFor="@string/escolha_fila"
                 android:longClickable="true"
-                android:id="@+id/tiposDeFila" />
+                android:id="@+id/escolherFila" />
         </TableRow>
 
         <TableRow
@@ -82,7 +65,7 @@
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/salvar_chamado"
+                android:text="@string/listar_chamados"
                 android:id="@+id/button"
                 android:textColor="@color/material_grey_300"
                 android:background="@color/colorPrimary"

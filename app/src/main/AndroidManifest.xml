@@ -8,19 +8,19 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MenuDeChamados">
+        <activity android:name=".controller.MenuDeChamados">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".NovoChamado" />
-        <activity android:name=".ListarChamados" />
-        <activity android:name=".ChamadoMensagem" />
-        <activity android:name=".FecharChamados" />
-        <activity android:name=".FecharChamadosLIsta" />
-        <activity android:name=".ListaDeChamados"/>
+        <activity android:name=".controller.NovoChamado" />
+        <activity android:name=".controller.ListarChamados" />
+        <activity android:name=".controller.ChamadoMensagem" />
+        <activity android:name=".controller.FecharChamados" />
+        <activity android:name=".controller.FecharChamadosLista" />
+        <activity android:name=".controller.ListaDeChamados"/>
     </application>
 
 </manifest>

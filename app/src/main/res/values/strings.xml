@@ -7,7 +7,11 @@
     <string name="tipo_fila">Fila</string>
     <string name="listar_chamados">Listar Chamados</string>
     <string name="escolha_fila">Escolha a fila</string>
+    <string name="escolha_status">Escolha o Status</string>
     <string name="fechar_msg">Selecione os chamados que deseja fechar.</string>
     <string name="listar_chamados_abertos">Listar Chamados abertos</string>
     <string name="salvar_chamado">Salvar Chamado</string>
+    <string name="lista_status">Consultar por Status</string>
+    <string name="lista_fila">Consultar por Fila</string>
+    <string name="lista_todos">Consultar Todos</string>
 </resources>
