@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">ServiceDesk Mobile</string>
+    <string name="consultar_chamados">Consultar Chamados</string>
+    <string name="novo_chamado">Novo Chamado</string>
+    <string name="fechar_chamado">Fechar Chamado</string>
+    <string name="descricao">Descrição</string>
+    <string name="tipo_fila">Fila</string>
+    <string name="listar_chamados">Listar Chamados</string>
+    <string name="escolha_fila">Escolha a fila</string>
+    <string name="fechar_msg">Selecione os chamados que deseja fechar.</string>
+    <string name="listar_chamados_abertos">Listar Chamados abertos</string>
+    <string name="salvar_chamado">Salvar Chamado</string>
+</resources>
