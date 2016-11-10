@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.projeto.com.br.appservicedesk.R;
 import android.projeto.com.br.appservicedesk.initializer.InitializeSpinner;
 import android.projeto.com.br.appservicedesk.model.Chamado;
+import android.projeto.com.br.appservicedesk.util.ConnectionUrls;
 import android.projeto.com.br.appservicedesk.util.JSonFacadeChamado;
 import android.projeto.com.br.appservicedesk.util.JSonFacadeFila;
 import android.support.v7.app.AppCompatActivity;
@@ -30,28 +31,29 @@ import java.util.ArrayList;
 public class NovoChamado extends AppCompatActivity {
 
     private Spinner tiposDeFila;
-    private static String URLJSON = "http://192.168.1.36:8080/servicedesk/ServicoChamado.do";
     private Activity activity;
     private ProgressDialog dialog;
+    EditText text;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_novo_chamado);
+        text = (EditText) findViewById(R.id.descricao);
+        text.setMaxWidth(text.getWidth());
         activity = this;
-        new FilaConverter().execute();
+        new LoadFilaTask().execute();
     }
 
 
     public void registrarChamado(View view) throws IOException {
-        EditText text = (EditText) findViewById(R.id.descricao);
         String descricao = text.getText().toString();
         int fila = tiposDeFila.getSelectedItemPosition() + 1;
 
         if (descricao != null && !descricao.isEmpty()) {
             Chamado chamado = new Chamado(descricao, 1, fila);//1-estado aberto
             String json = JSonFacadeChamado.chamadoToJSon(chamado);
-            new MyDownloadTask().execute(json);
+            new CreateTask().execute(json);
 
         }else {
             setContentView(R.layout.error_message);
@@ -61,7 +63,7 @@ public class NovoChamado extends AppCompatActivity {
     }
 
 
-    class MyDownloadTask extends AsyncTask<String, String, Chamado> {
+    class CreateTask extends AsyncTask<String, String, Chamado> {
 
         @Override
         protected void onPreExecute() {
@@ -72,7 +74,7 @@ public class NovoChamado extends AppCompatActivity {
 
         @Override
         protected Chamado doInBackground(String... params) {
-            return makeJSonRequest(params[0]);
+            return makeJSonRequestForChamado(params[0]);
         }
 
         @Override
@@ -99,15 +101,13 @@ public class NovoChamado extends AppCompatActivity {
     }
 
 
-    public Chamado makeJSonRequest(String json) {
+    public Chamado makeJSonRequestForChamado(String json) {
         HttpURLConnection httpcon;
         Chamado result = null;
         try {
 
-            httpcon = (HttpURLConnection) ((new URL(URLJSON).openConnection()));
+            httpcon = (HttpURLConnection) ((new URL(ConnectionUrls.URL_SERVICO_CHAMADO).openConnection()));
             httpcon.setDoOutput(true);
-            /*httpcon.setRequestProperty("Content-Type", "application/json");
-            httpcon.setRequestProperty("Accept", "application/json");*/
             httpcon.setRequestMethod("POST");
             httpcon.connect();
 
@@ -145,9 +145,7 @@ public class NovoChamado extends AppCompatActivity {
     }
 
    //initialize Spinner
-   class FilaConverter extends AsyncTask<String, String, ArrayList<String>> {
-
-        String URLJSON = "http://192.168.1.36:8080/servicedesk/ServicoFila.do";
+   class LoadFilaTask extends AsyncTask<String, String, ArrayList<String>> {
 
         @Override
         protected void onPreExecute() {
@@ -173,7 +171,7 @@ public class NovoChamado extends AppCompatActivity {
             ArrayList<String> result = null;
             try {
 
-                httpcon = (HttpURLConnection) ((new URL(URLJSON).openConnection()));
+                httpcon = (HttpURLConnection) ((new URL(ConnectionUrls.URL_SERVICO_FILA).openConnection()));
                 httpcon.setDoOutput(false);
                 httpcon.setRequestMethod("GET");
                 httpcon.connect();

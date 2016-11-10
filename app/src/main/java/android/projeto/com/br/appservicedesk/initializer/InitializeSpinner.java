@@ -16,7 +16,7 @@ public class InitializeSpinner {
 
 
     public static Spinner initializeAndSetAdapterSppinerForFila(Spinner spinner, Context context, ArrayList<String> values) {
-                ArrayAdapter < String > adapter = new ArrayAdapter<>(
+                ArrayAdapter <String> adapter = new ArrayAdapter<>(
                         context, android.R.layout.simple_spinner_item, values);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);

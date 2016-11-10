@@ -26,10 +26,13 @@
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:textSize="50sp"
                 android:id="@+id/descricao"
                 android:hint="@string/descricao"
-                />
+                android:ellipsize="none"
+                android:inputType="textCapSentences|textMultiLine"
+                android:maxLines="20"
+                android:scrollHorizontally="false"
+                android:maxLength="@android:integer/status_bar_notification_info_maxnum" />
         </TableRow>
 
         <TableRow

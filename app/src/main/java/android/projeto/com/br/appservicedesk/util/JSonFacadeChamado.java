@@ -105,6 +105,42 @@ public class JSonFacadeChamado {
         return object.toString();
     }
 
+    public static ArrayList<Chamado> jsonToList(String lista) {
+        ArrayList<Chamado> listRet = new ArrayList<>();
+        try {
+
+            JSONArray vetor = new JSONArray(lista);
+            for (int i = 0; i < vetor.length(); i++) {
+                SimpleDateFormat dateformat = new SimpleDateFormat("dd-MM-yyyy");
+                JSONObject registro = new JSONObject(String.valueOf(vetor.getJSONObject(i)));
+                long numero = registro.getLong("numero");
+                String descricao = registro.getString("descricao");
+                Date abertura = null;
+                try{
+                    abertura = dateformat.parse(registro.getString("dataAbertura"));
+                }catch(Exception e){
+                    e.printStackTrace();
+                    abertura  = null;
+                }
+
+                Date fechamento;
+                try{
+                    fechamento = dateformat.parse(registro.getString("dataFechamento"));
+                }catch(Exception e){
+                    fechamento  = null;
+                }
+                int fila = registro.getInt("fila");
+                int status = registro.getInt("status");
+                listRet.add(new Chamado(numero,descricao,fechamento,abertura,status,fila));
+            }
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        return listRet;
+    }
+
 
     public static String errorToJSon(Exception e) {
         JSONObject object = new JSONObject();

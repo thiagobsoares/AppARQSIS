@@ -3,6 +3,7 @@ package android.projeto.com.br.appservicedesk.model;
 import android.app.Activity;
 import android.content.Context;
 import android.projeto.com.br.appservicedesk.R;
+import android.projeto.com.br.appservicedesk.util.StatusHandler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -77,7 +78,7 @@ public class ChamadoAdapter extends BaseAdapter implements SectionIndexer {
         Locale locale = new Locale("pt", "BR");
         holder.getNumeroChamado().setText(String.valueOf(chamados.get(position).getNumero()));
         holder.getDescricaoChamado().setText(chamados.get(position).getDescricao());
-        //holder.getStatusChamado().setText(StatusConverter.statusName.get(chamados.get(position).getStatus()));
+        holder.getStatusChamado().setText(StatusHandler.status.get(chamados.get(position).getStatus()));
 
         return view;
     }
